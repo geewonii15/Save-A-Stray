@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "867589408446",
+    "project_id": "save-a-stray-9356d",
+    "storage_bucket": "save-a-stray-9356d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:867589408446:android:ff54fbb003be4fca3f40ef",
+        "android_client_info": {
+          "package_name": "com.example.saveastray"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzQi3K6K2D6msD1qFeKs1q8208P0CwkIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
