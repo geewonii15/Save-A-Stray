@@ -5,11 +5,26 @@
     android:orientation="vertical"
     android:padding="32dp"
     android:gravity="center"
-    android:background="@color/deep_teal"> <ImageView
-    android:layout_width="150dp"
-    android:layout_height="150dp"
-    android:src="@drawable/ic_main_logo"
-    android:layout_marginBottom="32dp"/>
+    android:background="@color/deep_teal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Account"
+        android:textColor="@color/white"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="32dp"/>
+
+    <EditText
+        android:id="@+id/etFullName"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:hint="Full Name"
+        android:inputType="textPersonName"
+        android:background="@android:drawable/editbox_background"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp"/>
 
     <EditText
         android:id="@+id/etEmail"
@@ -19,8 +34,7 @@
         android:inputType="textEmailAddress"
         android:background="@android:drawable/editbox_background"
         android:padding="12dp"
-        android:layout_marginBottom="16dp"
-        android:textColorHint="#757575"/>
+        android:layout_marginBottom="16dp"/>
 
     <EditText
         android:id="@+id/etPassword"
@@ -30,25 +44,25 @@
         android:inputType="textPassword"
         android:background="@android:drawable/editbox_background"
         android:padding="12dp"
-        android:layout_marginBottom="24dp"
-        android:textColorHint="#757575"/>
+        android:layout_marginBottom="24dp"/>
 
     <Button
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnSignUp"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="Login"
+        android:text="Sign Up"
         android:textSize="18sp"
         android:textStyle="bold"
         android:backgroundTint="#8AB293"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:layout_marginBottom="16dp"/>
 
     <TextView
-        android:id="@+id/tvRegisterLink"
+        android:id="@+id/tvLoginLink"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Don't have an account? Register"
+        android:text="Already have an account? Login"
         android:textColor="@color/white"
         android:textSize="14sp"/>
+
 </LinearLayout>
