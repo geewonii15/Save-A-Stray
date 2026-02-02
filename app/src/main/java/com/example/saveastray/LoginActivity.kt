@@ -19,19 +19,16 @@ class LoginActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        // 1. Get the "Mode" (Admin vs. Regular User)
         val isAdmin = intent.getBooleanExtra("IS_ADMIN", false)
         val loginButton = findViewById<Button>(R.id.btnLogin)
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
 
-        // 2. Adjust UI for Admin
         if (isAdmin) {
             loginButton.text = "Login as Admin"
             loginButton.backgroundTintList = getColorStateList(R.color.sage_green) // Optional visual cue
         }
 
-        // 3. Handle Login Click
         loginButton.setOnClickListener {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
@@ -41,19 +38,19 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // 4. Talk to Firebase
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
                         Toast.makeText(this, "Welcome!", Toast.LENGTH_SHORT).show()
 
-                        // DECISION POINT: Where do we go?
                         if (isAdmin) {
-                            // TODO: Go to Admin Dashboard (We will build this next!)
-                            Toast.makeText(this, "Redirecting to Admin Dashboard...", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this, AdminActivity::class.java)
+                            startActivity(intent)
+                            finish()
                         } else {
-                            // TODO: Go to User Home Screen (Adoption Feed)
-                            Toast.makeText(this, "Redirecting to Home Feed...", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(this, HomeActivity::class.java)
+                            startActivity(intent)
+                            finish()
                         }
 
                     } else {

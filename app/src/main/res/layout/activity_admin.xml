@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/deep_teal"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Admin: Add a Cat"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp"/>
+
+        <EditText
+            android:id="@+id/etCatImage"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Paste Image Link (URL)"
+            android:inputType="textUri"
+            android:background="@android:drawable/editbox_background"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:id="@+id/etCatName"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Cat Name (e.g., Mingming)"
+            android:inputType="textCapWords"
+            android:background="@android:drawable/editbox_background"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:id="@+id/etCatBreed"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Breed (e.g., Puspin)"
+            android:inputType="textCapWords"
+            android:background="@android:drawable/editbox_background"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:id="@+id/etCatAge"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:hint="Age (e.g., 2 years)"
+            android:inputType="text"
+            android:background="@android:drawable/editbox_background"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp"/>
+
+        <EditText
+            android:id="@+id/etCatDesc"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:hint="Description (Story, personality...)"
+            android:gravity="top|start"
+            android:background="@android:drawable/editbox_background"
+            android:padding="12dp"
+            android:layout_marginBottom="24dp"/>
+
+        <Button
+            android:id="@+id/btnSaveCat"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Save Cat to Database"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:backgroundTint="#8AB293"
+            android:textColor="@color/black"/>
+
+        <Button
+            android:id="@+id/btnLogoutAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Log Out"
+            android:textColor="@color/white"
+            android:backgroundTint="#D32F2F"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"/>
+
+    </LinearLayout>
+</ScrollView>
