@@ -15,23 +15,19 @@ class AdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin)
 
+        val btnBack = findViewById<android.widget.ImageButton>(R.id.btnBack)
+        btnBack.setOnClickListener {
+            finish()
+        }
+
         db = FirebaseFirestore.getInstance()
 
         val etImage = findViewById<EditText>(R.id.etCatImage)
-
         val etName = findViewById<EditText>(R.id.etCatName)
         val etBreed = findViewById<EditText>(R.id.etCatBreed)
         val etAge = findViewById<EditText>(R.id.etCatAge)
         val etDesc = findViewById<EditText>(R.id.etCatDesc)
         val btnSave = findViewById<Button>(R.id.btnSaveCat)
-        val btnLogout = findViewById<Button>(R.id.btnLogoutAdmin)
-        btnLogout.setOnClickListener {
-            com.google.firebase.auth.FirebaseAuth.getInstance().signOut()
-
-            val intent = android.content.Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
 
         btnSave.setOnClickListener {
             val imageLink = etImage.text.toString().trim()

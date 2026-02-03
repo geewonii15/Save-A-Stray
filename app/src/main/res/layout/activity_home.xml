@@ -10,18 +10,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/deep_teal"
-        android:padding="24dp"
+        android:padding="16dp"
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <TextView
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Find a Friend"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            android:textStyle="bold"/>
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Find a Friend"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/btnMyApps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View My Applications >"
+                android:textColor="#FFB74D"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:padding="12dp"
+                android:background="?attr/selectableItemBackground"
+                android:clickable="true"
+                android:focusable="true" />
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/btnLogout"

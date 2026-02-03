@@ -10,14 +10,32 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Admin: Add a Cat"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="24dp"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_revert"
+                android:contentDescription="Back"
+                app:tint="@color/white"
+                xmlns:app="http://schemas.android.com/apk/res-auto"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add New Cat"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp"/>
+        </LinearLayout>
 
         <EditText
             android:id="@+id/etCatImage"
@@ -78,16 +96,6 @@
             android:textStyle="bold"
             android:backgroundTint="#8AB293"
             android:textColor="@color/black"/>
-
-        <Button
-            android:id="@+id/btnLogoutAdmin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Log Out"
-            android:textColor="@color/white"
-            android:backgroundTint="#D32F2F"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="32dp"/>
 
     </LinearLayout>
 </ScrollView>

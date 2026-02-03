@@ -1,10 +1,14 @@
 package com.example.saveastray
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
 class HomeActivity : AppCompatActivity() {
@@ -30,27 +34,30 @@ class HomeActivity : AppCompatActivity() {
 
         getCatData()
 
-        val btnLogout = findViewById<android.widget.ImageButton>(R.id.btnLogout)
+        val btnLogout = findViewById<ImageButton>(R.id.btnLogout)
         btnLogout.setOnClickListener {
-            com.google.firebase.auth.FirebaseAuth.getInstance().signOut()
-
-            val intent = android.content.Intent(this, LoginActivity::class.java)
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
+        }
+
+        val btnMyApps = findViewById<TextView>(R.id.btnMyApps)
+        btnMyApps.setOnClickListener {
+            val intent = Intent(this, UserRequestsActivity::class.java)
+            startActivity(intent)
         }
     }
 
     private fun getCatData() {
         db.collection("cats")
-            .get() // Grab all documents
+            .get()
             .addOnSuccessListener { documents ->
                 catList.clear()
-
                 for (document in documents) {
                     val cat = document.toObject(Cat::class.java)
                     catList.add(cat)
                 }
-
                 catAdapter.notifyDataSetChanged()
             }
             .addOnFailureListener {

@@ -26,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
 
         if (isAdmin) {
             loginButton.text = "Login as Admin"
-            loginButton.backgroundTintList = getColorStateList(R.color.sage_green) // Optional visual cue
+            loginButton.backgroundTintList = getColorStateList(R.color.sage_green)
         }
 
         loginButton.setOnClickListener {
@@ -44,7 +44,7 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(this, "Welcome!", Toast.LENGTH_SHORT).show()
 
                         if (isAdmin) {
-                            val intent = Intent(this, AdminActivity::class.java)
+                            val intent = Intent(this, AdminDashboardActivity::class.java)
                             startActivity(intent)
                             finish()
                         } else {
@@ -59,7 +59,6 @@ class LoginActivity : AppCompatActivity() {
                 }
         }
 
-        // 5. Navigation to Sign Up
         val registerLink = findViewById<TextView>(R.id.tvRegisterLink)
         registerLink.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
