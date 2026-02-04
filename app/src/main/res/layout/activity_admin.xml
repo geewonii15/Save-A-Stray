@@ -2,100 +2,194 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/deep_teal"
-    android:padding="24dp">
+    android:background="#2F6F6F"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="24dp">
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="24dp">
-
-            <ImageButton
-                android:id="@+id/btnBack"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@android:drawable/ic_menu_revert"
-                android:contentDescription="Back"
-                app:tint="@color/white"
-                xmlns:app="http://schemas.android.com/apk/res-auto"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add New Cat"
-                android:textColor="@color/white"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:layout_marginStart="16dp"/>
-        </LinearLayout>
+            android:text="Add New Cat 🐾"
+            android:textColor="@color/white"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp"/>
 
         <EditText
             android:id="@+id/etCatImage"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="wrap_content"
             android:hint="Paste Image Link (URL)"
-            android:inputType="textUri"
-            android:background="@android:drawable/editbox_background"
-            android:padding="12dp"
+            android:textColorHint="#B2DFDB"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/white"
             android:layout_marginBottom="16dp"/>
 
         <EditText
             android:id="@+id/etCatName"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:hint="Cat Name (e.g., Mingming)"
-            android:inputType="textCapWords"
-            android:background="@android:drawable/editbox_background"
-            android:padding="12dp"
+            android:layout_height="wrap_content"
+            android:hint="Cat Name"
+            android:textColorHint="#B2DFDB"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/white"
             android:layout_marginBottom="16dp"/>
 
         <EditText
             android:id="@+id/etCatBreed"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:hint="Breed (e.g., Puspin)"
-            android:inputType="textCapWords"
-            android:background="@android:drawable/editbox_background"
-            android:padding="12dp"
+            android:layout_height="wrap_content"
+            android:hint="Breed"
+            android:textColorHint="#B2DFDB"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/white"
             android:layout_marginBottom="16dp"/>
 
         <EditText
             android:id="@+id/etCatAge"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
-            android:hint="Age (e.g., 2 years)"
-            android:inputType="text"
-            android:background="@android:drawable/editbox_background"
-            android:padding="12dp"
+            android:layout_height="wrap_content"
+            android:hint="Age (e.g. 2 years)"
+            android:textColorHint="#B2DFDB"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/white"
             android:layout_marginBottom="16dp"/>
 
         <EditText
             android:id="@+id/etCatDesc"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:hint="Description (Story, personality...)"
-            android:gravity="top|start"
-            android:background="@android:drawable/editbox_background"
-            android:padding="12dp"
-            android:layout_marginBottom="24dp"/>
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:textColorHint="#B2DFDB"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/white"
+            android:layout_marginBottom="32dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Personality Traits 🧠"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_card_background"
+            android:backgroundTint="#26A69A"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Energy: Lazy (1) ↔️ Active (5)"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+            <RadioGroup
+                android:id="@+id/rgAdminEnergy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <RadioButton android:id="@+id/rbEn1" android:text="1" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+                <RadioButton android:id="@+id/rbEn2" android:text="2" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+                <RadioButton android:id="@+id/rbEn3" android:text="3" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+                <RadioButton android:id="@+id/rbEn4" android:text="4" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+                <RadioButton android:id="@+id/rbEn5" android:text="5" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Affection: Independent (1) ↔️ Clingy (5)"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
+            <RadioGroup
+                android:id="@+id/rgAdminAffection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <RadioButton android:id="@+id/rbAf1" android:text="1" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+                <RadioButton android:id="@+id/rbAf2" android:text="2" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+                <RadioButton android:id="@+id/rbAf3" android:text="3" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+                <RadioButton android:id="@+id/rbAf4" android:text="4" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+                <RadioButton android:id="@+id/rbAf5" android:text="5" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Social: Shy (1) ↔️ Party Animal (5)"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
+            <RadioGroup
+                android:id="@+id/rgAdminSocial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <RadioButton android:id="@+id/rbSo1" android:text="1" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+                <RadioButton android:id="@+id/rbSo2" android:text="2" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+                <RadioButton android:id="@+id/rbSo3" android:text="3" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+                <RadioButton android:id="@+id/rbSo4" android:text="4" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+                <RadioButton android:id="@+id/rbSo5" android:text="5" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Vocalness: Quiet (1) ↔️ Talkative (5)"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
+            <RadioGroup
+                android:id="@+id/rgAdminNoise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <RadioButton android:id="@+id/rbNo1" android:text="1" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+                <RadioButton android:id="@+id/rbNo2" android:text="2" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+                <RadioButton android:id="@+id/rbNo3" android:text="3" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+                <RadioButton android:id="@+id/rbNo4" android:text="4" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+                <RadioButton android:id="@+id/rbNo5" android:text="5" android:layout_weight="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#FFF" android:buttonTint="#FFF"/>
+            </RadioGroup>
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnSaveCat"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:text="Save Cat to Database"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:backgroundTint="#8AB293"
-            android:textColor="@color/black"/>
+            android:layout_height="wrap_content"
+            android:text="Save Cat"
+            android:backgroundTint="#FFAB91"
+            android:textColor="#D84315"/>
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_revert"
+            android:background="@android:color/transparent"
+            android:tint="@color/white"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"/>
 
     </LinearLayout>
 </ScrollView>

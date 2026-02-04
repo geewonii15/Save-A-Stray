@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5">
+    android:background="#F5F5F5"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,15 +15,17 @@
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_background"
-            android:background="#E0E0E0"/>
+            android:src="@mipmap/ic_launcher" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="24dp"
-            android:layout_marginTop="-24dp">
+            android:background="@drawable/rounded_card_background"
+            android:layout_marginTop="-30dp"
+            android:elevation="10dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -38,26 +41,25 @@
                     android:text="Cat Name"
                     android:textSize="32sp"
                     android:textStyle="bold"
-                    android:textColor="#2D4F3C"/>
+                    android:textColor="#2F6F6F"/>
 
                 <TextView
                     android:id="@+id/tvDetailAge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2 yrs"
-                    android:background="#E8F5E9"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="6dp"
-                    android:textColor="#2D4F3C"
+                    android:text="2 Years"
+                    android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textSize="18sp"/>
+                    android:textColor="#FFFFFF"
+                    android:background="#8AB293"
+                    android:padding="8dp"/>
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tvDetailBreed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Breed"
+                android:text="Tabby Mix"
                 android:textSize="18sp"
                 android:textColor="#757575"
                 android:layout_marginBottom="24dp"/>
@@ -68,28 +70,38 @@
                 android:text="About Me"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="#2D4F3C"
+                android:textColor="#2F6F6F"
                 android:layout_marginBottom="8dp"/>
 
             <TextView
                 android:id="@+id/tvDetailDesc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Description goes here..."
+                android:text="Full description goes here..."
                 android:textSize="16sp"
                 android:lineSpacingExtra="4dp"
                 android:textColor="#424242"
                 android:layout_marginBottom="32dp"/>
 
             <Button
-                android:id="@+id/btnStartAdoption"
+                android:id="@+id/btnAdoptMe"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Adopt Me!️"
+                android:text="Adopt Me!"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:backgroundTint="#8AB293"
-                android:textColor="@color/black"/>
+                android:backgroundTint="#2F6F6F"
+                android:textColor="@color/white"/>
+
+            <Button
+                android:id="@+id/btnBackDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Back to List"
+                android:textSize="16sp"
+                android:backgroundTint="#E0E0E0"
+                android:textColor="#000000"
+                android:layout_marginTop="12dp"/>
 
         </LinearLayout>
     </LinearLayout>

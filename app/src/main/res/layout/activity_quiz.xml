@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#42746D"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Personality Match 🧠"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="32dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_card_background"
+            android:backgroundTint="#5C8D85"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1. Activity Level ⚡"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lazy (1) ↔️ Active (5)"
+                android:textColor="#E0F2F1"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioGroup
+                android:id="@+id/rgEnergy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <RadioButton android:id="@+id/rbEnergy1" android:text="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+                <RadioButton android:id="@+id/rbEnergy2" android:text="2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+                <RadioButton android:id="@+id/rbEnergy3" android:text="3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+                <RadioButton android:id="@+id/rbEnergy4" android:text="4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+                <RadioButton android:id="@+id/rbEnergy5" android:text="5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_card_background"
+            android:backgroundTint="#5C8D85"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2. Cuddliness ❤️"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Independent (1) ↔️ Clingy (5)"
+                android:textColor="#E0F2F1"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioGroup
+                android:id="@+id/rgAffection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <RadioButton android:id="@+id/rbAffection1" android:text="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+                <RadioButton android:id="@+id/rbAffection2" android:text="2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+                <RadioButton android:id="@+id/rbAffection3" android:text="3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+                <RadioButton android:id="@+id/rbAffection4" android:text="4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+                <RadioButton android:id="@+id/rbAffection5" android:text="5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_card_background"
+            android:backgroundTint="#5C8D85"
+            android:padding="16dp"
+            android:layout_marginBottom="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3. Visitors 🏠"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shy (1) ↔️ Party Animal (5)"
+                android:textColor="#E0F2F1"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioGroup
+                android:id="@+id/rgSocial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <RadioButton android:id="@+id/rbSocial1" android:text="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+                <RadioButton android:id="@+id/rbSocial2" android:text="2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+                <RadioButton android:id="@+id/rbSocial3" android:text="3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+                <RadioButton android:id="@+id/rbSocial4" android:text="4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+                <RadioButton android:id="@+id/rbSocial5" android:text="5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rounded_card_background"
+            android:backgroundTint="#5C8D85"
+            android:padding="16dp"
+            android:layout_marginBottom="32dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4. Vocalness 🗣️"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quiet (1) ↔️ Talkative (5)"
+                android:textColor="#E0F2F1"
+                android:layout_marginBottom="8dp"/>
+
+            <RadioGroup
+                android:id="@+id/rgNoise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <RadioButton android:id="@+id/rbNoise1" android:text="1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+                <RadioButton android:id="@+id/rbNoise2" android:text="2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+                <RadioButton android:id="@+id/rbNoise3" android:text="3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+                <RadioButton android:id="@+id/rbNoise4" android:text="4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+                <RadioButton android:id="@+id/rbNoise5" android:text="5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1" android:buttonTint="#B2DFDB" android:textColor="#FFF"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnFindMatch"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Find My Soulmate! 🔎"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:backgroundTint="#344E41"
+            android:textColor="@color/white"
+            android:elevation="6dp"/>
+
+    </LinearLayout>
+</ScrollView>

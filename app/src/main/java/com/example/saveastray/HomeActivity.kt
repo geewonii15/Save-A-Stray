@@ -2,66 +2,52 @@ package com.example.saveastray
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ImageButton
+import android.view.View
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 
 class HomeActivity : AppCompatActivity() {
-
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var catList: ArrayList<Cat>
-    private lateinit var catAdapter: CatAdapter
-    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        recyclerView = findViewById(R.id.rvCatList)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.setHasFixedSize(true)
+        // 1. Personalized Greeting
+        val user = FirebaseAuth.getInstance().currentUser
+        val tvName = findViewById<TextView>(R.id.tvUserName)
+        if (user != null && user.email != null) {
+            tvName.text = user.email
+        }
 
-        catList = arrayListOf()
-        catAdapter = CatAdapter(catList)
-        recyclerView.adapter = catAdapter
+        // 2. Navigation Buttons (Find Views safely)
+        val btnBrowse = findViewById<View>(R.id.btnGoToBrowse)
+        val btnQuiz = findViewById<View>(R.id.btnGoToQuiz)
+        val btnProfile = findViewById<View>(R.id.btnGoToProfile) // New Button!
+        val btnLogout = findViewById<Button>(R.id.btnUserLogout)
 
-        db = FirebaseFirestore.getInstance()
+        btnBrowse.setOnClickListener {
+            startActivity(Intent(this, BrowseActivity::class.java))
+        }
 
-        getCatData()
+        btnQuiz.setOnClickListener {
+            startActivity(Intent(this, QuizActivity::class.java))
+        }
 
-        val btnLogout = findViewById<ImageButton>(R.id.btnLogout)
+        btnProfile.setOnClickListener {
+            // If you have a SettingsActivity, put it here.
+            // If not, we will create one, or just show a message for now.
+            startActivity(Intent(this, SettingsActivity::class.java))
+        }
+
         btnLogout.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()
         }
-
-        val btnMyApps = findViewById<TextView>(R.id.btnMyApps)
-        btnMyApps.setOnClickListener {
-            val intent = Intent(this, UserRequestsActivity::class.java)
-            startActivity(intent)
-        }
-    }
-
-    private fun getCatData() {
-        db.collection("cats")
-            .get()
-            .addOnSuccessListener { documents ->
-                catList.clear()
-                for (document in documents) {
-                    val cat = document.toObject(Cat::class.java)
-                    catList.add(cat)
-                }
-                catAdapter.notifyDataSetChanged()
-            }
-            .addOnFailureListener {
-                Toast.makeText(this, "Error getting data", Toast.LENGTH_SHORT).show()
-            }
     }
 }

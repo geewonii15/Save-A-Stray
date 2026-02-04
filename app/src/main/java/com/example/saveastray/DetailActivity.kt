@@ -9,74 +9,62 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var db: FirebaseFirestore
-    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
         db = FirebaseFirestore.getInstance()
-        auth = FirebaseAuth.getInstance()
 
-        val tvName = findViewById<TextView>(R.id.tvDetailName)
-        val tvBreed = findViewById<TextView>(R.id.tvDetailBreed)
-        val tvAge = findViewById<TextView>(R.id.tvDetailAge)
-        val tvDesc = findViewById<TextView>(R.id.tvDetailDesc)
+        val name = intent.getStringExtra("CAT_NAME") ?: ""
+        val breed = intent.getStringExtra("CAT_BREED") ?: ""
+        val age = intent.getStringExtra("CAT_AGE") ?: ""
+        val desc = intent.getStringExtra("CAT_DESC") ?: ""
+        val imageUrl = intent.getStringExtra("CAT_IMAGE") ?: ""
+
+        findViewById<TextView>(R.id.tvDetailName).text = name
+        findViewById<TextView>(R.id.tvDetailBreed).text = breed
+        findViewById<TextView>(R.id.tvDetailAge).text = age
+        findViewById<TextView>(R.id.tvDetailDesc).text = desc
+
         val ivImage = findViewById<ImageView>(R.id.ivDetailImage)
-        val btnAdopt = findViewById<Button>(R.id.btnStartAdoption)
+        Glide.with(this).load(imageUrl).into(ivImage)
 
-        val catName = intent.getStringExtra("NAME") ?: "Unknown"
-        val breed = intent.getStringExtra("BREED")
-        val age = intent.getStringExtra("AGE")
-        val desc = intent.getStringExtra("DESC")
-        val imageUrl = intent.getStringExtra("IMAGE")
+        findViewById<Button>(R.id.btnBackDetail).setOnClickListener { finish() }
 
-        tvName.text = catName
-        tvBreed.text = breed
-        tvAge.text = age
-        tvDesc.text = desc
-
-        Glide.with(this)
-            .load(imageUrl)
-            .centerCrop()
-            .placeholder(R.drawable.ic_launcher_background)
-            .into(ivImage)
-
-        btnAdopt.setOnClickListener {
-            submitAdoptionRequest(catName)
+        findViewById<Button>(R.id.btnAdoptMe).setOnClickListener {
+            val user = FirebaseAuth.getInstance().currentUser
+            if (user == null) {
+                Toast.makeText(this, "Please login first!", Toast.LENGTH_SHORT).show()
+            } else {
+                submitAdoptionRequest(user.email ?: "Unknown", name)
+            }
         }
     }
 
-    private fun submitAdoptionRequest(catName: String) {
-        val currentUser = auth.currentUser
-
-        if (currentUser == null) {
-            Toast.makeText(this, "You must be logged in!", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val email = currentUser.email ?: "No Email"
-
-        val applicationData = hashMapOf(
-            "userEmail" to email,
+    private fun submitAdoptionRequest(email: String, catName: String) {
+        val request = hashMapOf(
+            "adopterEmail" to email,
             "catName" to catName,
             "status" to "Pending",
-            "timestamp" to com.google.firebase.Timestamp.now()
+            "date" to SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Date())
         )
 
         db.collection("adoptions")
-            .add(applicationData)
+            .add(request)
             .addOnSuccessListener {
-                Toast.makeText(this, "Application Sent!", Toast.LENGTH_LONG).show()
-                findViewById<Button>(R.id.btnStartAdoption).isEnabled = false
-                findViewById<Button>(R.id.btnStartAdoption).text = "Request Sent"
+                Toast.makeText(this, "Request Sent! Check your Inbox.", Toast.LENGTH_LONG).show()
+                finish()
             }
-            .addOnFailureListener { e ->
-                Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+            .addOnFailureListener {
+                Toast.makeText(this, "Failed to send request.", Toast.LENGTH_SHORT).show()
             }
     }
 }

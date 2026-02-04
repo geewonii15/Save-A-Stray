@@ -14,6 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SaveAStray">
         <activity
+            android:name=".AdminSettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BrowseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".QuizActivity"
+            android:exported="false" />
+        <activity
             android:name=".UserRequestsActivity"
             android:exported="false" />
         <activity
