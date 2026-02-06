@@ -11,14 +11,32 @@
         android:orientation="vertical"
         android:padding="24dp">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add New Cat 🐾"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="24dp"/>
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="24dp">
+
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@android:drawable/ic_menu_revert"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:tint="@android:color/white"
+                android:contentDescription="Go Back" />
+
+            <TextView
+                android:id="@+id/tvHeaderTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add New Cat"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:layout_marginStart="16dp"/>
+        </LinearLayout>
 
         <EditText
             android:id="@+id/etCatImage"
@@ -26,8 +44,8 @@
             android:layout_height="wrap_content"
             android:hint="Paste Image Link (URL)"
             android:textColorHint="#B2DFDB"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/white"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@android:color/white"
             android:layout_marginBottom="16dp"/>
 
         <EditText
@@ -36,8 +54,8 @@
             android:layout_height="wrap_content"
             android:hint="Cat Name"
             android:textColorHint="#B2DFDB"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/white"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@android:color/white"
             android:layout_marginBottom="16dp"/>
 
         <EditText
@@ -46,8 +64,8 @@
             android:layout_height="wrap_content"
             android:hint="Breed"
             android:textColorHint="#B2DFDB"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/white"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@android:color/white"
             android:layout_marginBottom="16dp"/>
 
         <EditText
@@ -56,8 +74,8 @@
             android:layout_height="wrap_content"
             android:hint="Age (e.g. 2 years)"
             android:textColorHint="#B2DFDB"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/white"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@android:color/white"
             android:layout_marginBottom="16dp"/>
 
         <EditText
@@ -66,15 +84,15 @@
             android:layout_height="wrap_content"
             android:hint="Description"
             android:textColorHint="#B2DFDB"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/white"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@android:color/white"
             android:layout_marginBottom="32dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select Personality Traits 🧠"
-            android:textColor="@color/white"
+            android:text="Select Personality Traits"
+            android:textColor="@android:color/white"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginBottom="16dp"/>
@@ -180,16 +198,6 @@
             android:text="Save Cat"
             android:backgroundTint="#FFAB91"
             android:textColor="#D84315"/>
-
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_revert"
-            android:background="@android:color/transparent"
-            android:tint="@color/white"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"/>
 
     </LinearLayout>
 </ScrollView>

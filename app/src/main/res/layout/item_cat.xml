@@ -41,14 +41,23 @@
                     android:textColor="#2D4F3C"/>
 
                 <ImageButton
+                    android:id="@+id/btnEditCat"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@android:drawable/ic_menu_edit"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:tint="#FFD54F"
+                    android:layout_marginEnd="4dp"
+                    android:contentDescription="Edit Cat" />
+
+                <ImageButton
                     android:id="@+id/btnDeleteCat"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@android:drawable/ic_menu_delete"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:tint="#D32F2F"
-                    android:visibility="gone" />
-            </LinearLayout>
+                    android:visibility="gone" /> </LinearLayout>
 
             <TextView
                 android:id="@+id/tvCatBreed"

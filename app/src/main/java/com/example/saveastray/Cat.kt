@@ -1,16 +1,15 @@
 package com.example.saveastray
 
 data class Cat(
-    var name: String = "",
-    var breed: String = "",
-    var age: String = "",
-    var description: String = "",
-    var imageUrl: String = "",
+    var id: String = "",
+    val name: String = "",
+    val breed: String = "",
+    val age: String = "",
+    val description: String = "",
+    val imageUrl: String = "",
 
-    var energyLevel: Int = 3,
-    var affectionLevel: Int = 3,
-    var socialLevel: Int = 3,
-    var noiseLevel: Int = 3,
-
-    var tags: List<String> = listOf()
+    val energyLevel: Int = 3,
+    val affectionLevel: Int = 3,
+    val socialLevel: Int = 3,
+    val noiseLevel: Int = 3
 )

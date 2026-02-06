@@ -1,5 +1,7 @@
 package com.example.saveastray
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,20 +14,13 @@ import com.bumptech.glide.Glide
 import com.google.firebase.firestore.FirebaseFirestore
 
 class CatAdapter(
-    private val catList: ArrayList<Cat>,
+    private val context: Context,
+    private val catList: MutableList<Cat>,
     private val isAdmin: Boolean
 ) : RecyclerView.Adapter<CatAdapter.CatViewHolder>() {
 
-    class CatViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val tvName: TextView = itemView.findViewById(R.id.tvCatName)
-        val tvBreed: TextView = itemView.findViewById(R.id.tvCatBreed)
-        val tvDesc: TextView = itemView.findViewById(R.id.tvCatDesc)
-        val ivImage: ImageView = itemView.findViewById(R.id.ivCatImage)
-        val btnDelete: ImageButton = itemView.findViewById(R.id.btnDeleteCat)
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_cat, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.item_cat, parent, false)
         return CatViewHolder(view)
     }
 
@@ -36,52 +31,57 @@ class CatAdapter(
         holder.tvBreed.text = "${cat.breed} • ${cat.age}"
         holder.tvDesc.text = cat.description
 
-        Glide.with(holder.itemView.context)
+        Glide.with(context)
             .load(cat.imageUrl)
-            .centerCrop()
             .placeholder(R.mipmap.ic_launcher)
             .into(holder.ivImage)
 
-        holder.itemView.setOnClickListener {
-            val intent = android.content.Intent(holder.itemView.context, DetailActivity::class.java)
-            intent.putExtra("CAT_NAME", cat.name)
-            intent.putExtra("CAT_BREED", cat.breed)
-            intent.putExtra("CAT_AGE", cat.age)
-            intent.putExtra("CAT_DESC", cat.description)
-            intent.putExtra("CAT_IMAGE", cat.imageUrl)
-            holder.itemView.context.startActivity(intent)
-        }
-
         if (isAdmin) {
+            holder.btnEdit.visibility = View.VISIBLE
             holder.btnDelete.visibility = View.VISIBLE
-            holder.btnDelete.setOnClickListener {
-                deleteCat(cat, position, holder.itemView)
-            }
         } else {
+            holder.btnEdit.visibility = View.GONE
             holder.btnDelete.visibility = View.GONE
         }
-    }
 
-    private fun deleteCat(cat: Cat, position: Int, view: View) {
-        val db = FirebaseFirestore.getInstance()
-
-        db.collection("cats")
-            .whereEqualTo("name", cat.name)
-            .whereEqualTo("description", cat.description)
-            .get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    db.collection("cats").document(document.id).delete()
-                        .addOnSuccessListener {
-                            Toast.makeText(view.context, "Cat Deleted!", Toast.LENGTH_SHORT).show()
-                            catList.removeAt(position)
-                            notifyItemRemoved(position)
-                        }
+        holder.btnDelete.setOnClickListener {
+            val db = FirebaseFirestore.getInstance()
+            db.collection("cats").document(cat.id)
+                .delete()
+                .addOnSuccessListener {
+                    Toast.makeText(context, "Cat Deleted!", Toast.LENGTH_SHORT).show()
+                    catList.removeAt(position)
+                    notifyItemRemoved(position)
+                    notifyItemRangeChanged(position, catList.size)
                 }
-            }
+        }
+
+        holder.btnEdit.setOnClickListener {
+            val intent = Intent(context, AdminActivity::class.java)
+            intent.putExtra("catId", cat.id)
+            intent.putExtra("name", cat.name)
+            intent.putExtra("breed", cat.breed)
+            intent.putExtra("age", cat.age)
+            intent.putExtra("description", cat.description)
+            intent.putExtra("imageUrl", cat.imageUrl)
+
+            intent.putExtra("energy", cat.energyLevel)
+            intent.putExtra("affection", cat.affectionLevel)
+            intent.putExtra("social", cat.socialLevel)
+            intent.putExtra("noise", cat.noiseLevel)
+
+            context.startActivity(intent)
+        }
     }
 
-    override fun getItemCount(): Int {
-        return catList.size
+    override fun getItemCount(): Int = catList.size
+
+    class CatViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val tvName: TextView = itemView.findViewById(R.id.tvCatName)
+        val tvBreed: TextView = itemView.findViewById(R.id.tvCatBreed)
+        val tvDesc: TextView = itemView.findViewById(R.id.tvCatDesc)
+        val ivImage: ImageView = itemView.findViewById(R.id.ivCatImage)
+        val btnDelete: ImageButton = itemView.findViewById(R.id.btnDeleteCat)
+        val btnEdit: ImageButton = itemView.findViewById(R.id.btnEditCat)
     }
 }

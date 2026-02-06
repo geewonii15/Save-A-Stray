@@ -12,7 +12,7 @@
         android:text="Admin Settings"
         android:textSize="28sp"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColor="@android:color/white"
         android:layout_marginBottom="32dp"/>
 
     <TextView
@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:hint="Enter New Password"
-        android:textColor="@color/black"
+        android:textColor="@android:color/black"
         android:inputType="textPassword"
         android:background="@android:drawable/editbox_background"
         android:padding="12dp"
@@ -41,16 +41,34 @@
         android:layout_height="60dp"
         android:text="Update Password"
         android:backgroundTint="#FFB74D"
-        android:textColor="@color/black"
+        android:textColor="@android:color/black"
         android:textStyle="bold"
-        android:layout_marginBottom="32dp"/>
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pending Admin Requests"
+        android:textColor="#E0F2F1"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPendingAdmins"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#265C5C"
+        android:padding="8dp"
+        android:layout_marginBottom="16dp"/>
 
     <Button
         android:id="@+id/btnBackAdminSettings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Back to Dashboard"
-        android:textColor="@color/white"
+        android:textColor="@android:color/white"
         android:backgroundTint="#669083"/>
 
 </LinearLayout>

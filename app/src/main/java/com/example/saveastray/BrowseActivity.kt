@@ -29,7 +29,7 @@ class BrowseActivity : AppCompatActivity() {
 
         catList = arrayListOf()
 
-        catAdapter = CatAdapter(catList, isAdmin)
+        catAdapter = CatAdapter(this, catList, isAdmin)
         recyclerView.adapter = catAdapter
 
         db = FirebaseFirestore.getInstance()
@@ -42,6 +42,9 @@ class BrowseActivity : AppCompatActivity() {
                 catList.clear()
                 for (document in documents) {
                     val cat = document.toObject(Cat::class.java)
+
+                    cat.id = document.id
+
                     catList.add(cat)
                 }
                 catAdapter.notifyDataSetChanged()

@@ -41,18 +41,37 @@ class LoginActivity : AppCompatActivity() {
             auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
-                        Toast.makeText(this, "Welcome!", Toast.LENGTH_SHORT).show()
+                        val userId = auth.currentUser?.uid
 
-                        if (isAdmin) {
-                            val intent = Intent(this, AdminDashboardActivity::class.java)
-                            startActivity(intent)
-                            finish()
-                        } else {
-                            val intent = Intent(this, HomeActivity::class.java)
-                            startActivity(intent)
-                            finish()
+                        if (userId != null) {
+                            val db = com.google.firebase.firestore.FirebaseFirestore.getInstance()
+                            db.collection("users").document(userId).get()
+                                .addOnSuccessListener { document ->
+                                    val role = document.getString("role") ?: "user"
+                                    val status = document.getString("status") ?: "pending"
+
+                                    if (isAdmin) {
+                                        if (role == "admin" && status == "approved") {
+                                            Toast.makeText(this, "Welcome Admin!", Toast.LENGTH_SHORT).show()
+                                            startActivity(Intent(this, AdminDashboardActivity::class.java))
+                                            finish()
+                                        } else if (role == "admin" && status != "approved") {
+                                            Toast.makeText(this, "Account Pending Approval.", Toast.LENGTH_LONG).show()
+                                            auth.signOut()
+                                        } else {
+                                            Toast.makeText(this, "Access Denied: You are not an Admin.", Toast.LENGTH_SHORT).show()
+                                            auth.signOut()
+                                        }
+                                    }
+                                    else {
+                                        startActivity(Intent(this, HomeActivity::class.java))
+                                        finish()
+                                    }
+                                }
+                                .addOnFailureListener {
+                                    Toast.makeText(this, "Error verifying account.", Toast.LENGTH_SHORT).show()
+                                }
                         }
-
                     } else {
                         Toast.makeText(this, "Login Failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
                     }
